@@ -1,6 +1,6 @@
 module.exports = {
-  content: ['./**/*.html',],
-  safelist: [/data-theme$/,],
+  content: ['./content/**/*.html','./layouts/**/*.html'],
+  safelist: [{pattern:/data-theme$/}],
   theme: {
     screens:{
       'sm': '640px',
@@ -9,17 +9,12 @@ module.exports = {
       'lg': '1024px',
       'xl': '1280px',
       '2xl': '1536px',
-    },
-    extend: {
-      colors: require('daisyui/colors'),
-    },
+    }
   },
   plugins: [
     require('daisyui')
   ],
   daisyui: {
-      styled: true,
-      themes: true,
-      rtl: false,
+      themes: ['light','dark'],
     },
 }
