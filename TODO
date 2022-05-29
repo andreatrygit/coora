@@ -1,4 +1,12 @@
 CRA
+    yarn create
+    togli file non necessari
+    sposta file
+    togli codesplit
+    metti gzip
+HONO
+    aggiungi no cache con middleware su build
+    aggiungi 1 anno di cache con middleware su build/static
 MANTINE
 REACT ROUTER
     redirect all to index.html
