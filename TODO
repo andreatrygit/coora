@@ -2,3 +2,4 @@ WRANGLER
 CRA
 MANTINE
 REACT ROUTER
+    redirect all to index.html
