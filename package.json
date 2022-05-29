@@ -1,0 +1,9 @@
+{
+  "name": "coora",
+  "version": "1.0.0",
+  "description": "people care platform",
+  "main": "index.js",
+  "repository": "https://github.com/andreatrygit/coora.git",
+  "author": "andrea <andreawscotti@gmail.com>",
+  "license": "MIT"
+}
