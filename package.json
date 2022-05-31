@@ -2,11 +2,18 @@
   "name": "coora",
   "version": "1.0.0",
   "description": "people care platform",
-  "main": "index.js",
   "repository": "https://github.com/andreatrygit/coora.git",
   "author": "andrea <andreawscotti@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "hono": "^1.4.2"
+    "hono": "^1.4.2",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "scripts": {
+    "build": "esbuild main.jsx --bundle --minify --target=chrome58,firefox57,safari11,edge1 --outfile=../public/client.js"
+  },
+  "devDependencies": {
+    "esbuild": "^0.14.42"
   }
 }
