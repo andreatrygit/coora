@@ -11,7 +11,7 @@
     "react-dom": "^18.1.0"
   },
   "scripts": {
-    "build": "esbuild main.jsx --bundle --minify --target=chrome58,firefox57,safari11,edge1 --outfile=../public/client.js"
+    "build": "esbuild ./src/frontend/main.jsx --bundle --minify --target=chrome58,firefox57,safari11,edge1 --outfile=./public/client.js"
   },
   "devDependencies": {
     "esbuild": "^0.14.42"
