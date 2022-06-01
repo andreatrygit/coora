@@ -1,4 +1,4 @@
-function App(){
+function Spa(){
     return (
         <div>
             ciao mondo
@@ -6,4 +6,4 @@ function App(){
     );
 }
 
-export default App
+export default Spa
