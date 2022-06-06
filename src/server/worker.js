@@ -9,9 +9,12 @@
  */
 
 import { Hono } from 'hono'
+import { serveStatic } from 'hono/serve-static'
 
 const app = new Hono()
 
-app.get('/', (c) => c.text('Hono!!'))
+app.get('/', serveStatic({ root: './' }))
+app.get('/client.js', serveStatic({ root: './' }))
+
 
 app.fire()
