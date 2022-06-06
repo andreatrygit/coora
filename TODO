@@ -1,5 +1,5 @@
 BROTLI
-    
+    content-encoding header
 HONO
     no-store su api
     no-cache ed etag su public
