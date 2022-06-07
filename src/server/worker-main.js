@@ -9,12 +9,15 @@
  */
 
 import { Hono } from 'hono'
-import { serveStatic } from 'hono/serve-static'
+import index from '../frontend/index.html'
 
 const app = new Hono()
 
-app.get('/', serveStatic({ root: './' }))
-app.get('/client.js', serveStatic({ root: './' }))
+app.get('/', (c) => {
+    return c.html(index)
+  })
+
+//app.get('/client.js', serveStatic({ root: './' }))
 
 
 app.fire()
