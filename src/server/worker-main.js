@@ -10,7 +10,7 @@
 
 import { Hono } from 'hono'
 import index from '../frontend/index.html'
-import clientBundle from '../frontend/client-bundle.txt'
+import clientBundle from '../frontend/client-bundle.js.br'
 
 const app = new Hono()
 
@@ -20,6 +20,7 @@ app.get('/', (c) => {
 
 app.get('/client-bundle.js', (c) => {
   c.header('Content-Type', 'text/javascript')
+  c.header('Content-Encoding','br')
   c.status(200)
   return c.body(clientBundle)
   })

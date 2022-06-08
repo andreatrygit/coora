@@ -11,8 +11,8 @@
     "react-dom": "^18.1.0"
   },
   "scripts": {
-    "client-build": "esbuild ./src/frontend/client-main.jsx --bundle --minify --target=chrome58,firefox57,safari11,edge1 --outfile=./src/frontend/client-bundle.txt",
-    "server-build": "esbuild ./src/server/worker-main.js --bundle --outfile=./src/server/worker-bundle.js --loader:.html=text",
+    "client-build": "esbuild ./src/frontend/client-main.jsx --bundle --minify --target=chrome58,firefox57,safari11,edge1 --outfile=./src/frontend/client-bundle.js && brotli -j ./src/frontend/client-bundle.js",
+    "server-build": "esbuild ./src/server/worker-main.js --bundle --outfile=./src/server/worker-bundle.js --loader:.html=text --loader:.br=binary",
     "dev": "npx wrangler dev"
   },
   "devDependencies": {
