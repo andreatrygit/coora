@@ -739,19 +739,24 @@
   var client_bundle_hash_file_default = "737ca8bf65a82deb7df55b4d89320cdf368632139dd973104da71fd7c1f89be8 *./src/frontend/client-bundle.js.br\n";
 
   // src/server/worker-main.js
-  var clientBundleHash = client_bundle_hash_file_default.split(" ")[0];
+  var clientBundleEtag = '"' + client_bundle_hash_file_default.split(" ")[0] + '"';
   var app = new import_hono.Hono();
   app.get("/client-bundle.js", (c) => {
-    c.status(200);
-    c.header("Content-Type", "text/javascript");
-    c.header("Content-Encoding", "br");
-    c.header("Cache-Control", "no-cache");
-    c.header("Etag", '"' + clientBundleHash + '"');
-    return c.body(client_bundle_js_default);
+    const ifNoneMatchValue = c.req.header("If-None-Match") || c.req.header("if-none-match");
+    if (ifNoneMatchValue === clientBundleEtag) {
+      c.status(304);
+      return c.body("");
+    } else {
+      c.status(200);
+      c.header("Content-Type", "text/javascript");
+      c.header("Content-Encoding", "br");
+      c.header("Cache-Control", "no-cache");
+      c.header("Etag", clientBundleEtag);
+      return c.body(client_bundle_js_default);
+    }
   });
   app.get("/*", (c) => {
     c.status(200);
-    c.header("Content-Encoding", "");
     return c.html(frontend_default);
   });
   app.fire();

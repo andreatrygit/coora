@@ -13,17 +13,24 @@ import index from '../frontend/index.html'
 import clientBundle from '../frontend/client-bundle.js.br'
 import clientBundleRawHash from '../frontend/client-bundle-hash-file.txt'
 
-const clientBundleHash = clientBundleRawHash.split(' ')[0]
+const clientBundleEtag = '"' + clientBundleRawHash.split(' ')[0] + '"'
 
 const app = new Hono()
 
 app.get('/client-bundle.js', (c) => {
-  c.status(200)
-  c.header('Content-Type', 'text/javascript')
-  c.header('Content-Encoding','br')
-  c.header('Cache-Control','no-cache')
-  c.header('Etag','"' + clientBundleHash + '"')
-  return c.body(clientBundle)
+  const ifNoneMatchValue = c.req.header('If-None-Match') || c.req.header('if-none-match')
+  if(ifNoneMatchValue===clientBundleEtag){
+    c.status(304)
+    return c.body('')
+  }
+  else{
+    c.status(200)
+    c.header('Content-Type', 'text/javascript')
+    c.header('Content-Encoding','br')
+    c.header('Cache-Control','no-cache')
+    c.header('Etag',clientBundleEtag)
+    return c.body(clientBundle)
+  }
 })
 
 app.get('/*', (c) => {
