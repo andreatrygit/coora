@@ -737,14 +737,14 @@
 
   // src/server/worker-main.js
   var app = new import_hono.Hono();
-  app.get("/", (c) => {
-    return c.html(frontend_default);
-  });
   app.get("/client-bundle.js", (c) => {
     c.header("Content-Type", "text/javascript");
     c.header("Content-Encoding", "br");
     c.status(200);
     return c.body(client_bundle_js_default);
+  });
+  app.get("/*", (c) => {
+    return c.html(frontend_default);
   });
   app.fire();
 })();

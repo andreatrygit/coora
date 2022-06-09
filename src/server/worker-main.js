@@ -14,15 +14,15 @@ import clientBundle from '../frontend/client-bundle.js.br'
 
 const app = new Hono()
 
-app.get('/', (c) => {
-    return c.html(index)
-  })
-
 app.get('/client-bundle.js', (c) => {
   c.header('Content-Type', 'text/javascript')
   c.header('Content-Encoding','br')
   c.status(200)
   return c.body(clientBundle)
+})
+
+app.get('/*', (c) => {
+    return c.html(index)
   })
 
 app.fire()
