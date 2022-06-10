@@ -54,6 +54,8 @@ app.post('/api/*',async (c,next) => { //async?
   c.header('Cache-Control','no-store');
 })
 
-
+app.notFound((c) => {
+  return c.text("Qui non c'è nulla.", 404)
+})
 
 app.fire()

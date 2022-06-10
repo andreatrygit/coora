@@ -775,9 +775,8 @@
     await next();
     c.header("Cache-Control", "no-store");
   });
-  app.post("api/hey", (c) => {
-    c.status(200);
-    return c.json({ answer: "ho" });
+  app.notFound((c) => {
+    return c.text("Qui non c'\xE8 nulla.", 404);
   });
   app.fire();
 })();
