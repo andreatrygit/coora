@@ -7,4 +7,7 @@ HONO
     make it strict at initialitazion
 MANTINE
 
+
+???
 che fine fanno i log di hono?
+CF aggiunge br e W/ a tutte le req su /* e non fa il giro con etag
