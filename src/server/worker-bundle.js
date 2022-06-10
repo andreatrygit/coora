@@ -771,5 +771,13 @@
       return c.html(frontend_default);
     }
   });
+  app.post("/api/*", async (c, next) => {
+    await next();
+    c.header("Cache-Control", "no-store");
+  });
+  app.post("api/hey", (c) => {
+    c.status(200);
+    return c.json({ answer: "ho" });
+  });
   app.fire();
 })();

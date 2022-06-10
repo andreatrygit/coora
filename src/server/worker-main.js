@@ -49,4 +49,11 @@ app.get('/*', (c) => {
   }
 })
 
+app.post('/api/*',async (c,next) => { //async?
+  await next();
+  c.header('Cache-Control','no-store');
+})
+
+
+
 app.fire()

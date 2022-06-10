@@ -1,9 +1,5 @@
-BROTLI
-    content-encoding header
 HONO
     no-store su api
-    no-cache ed etag su public
-    reindirizzamento su index.html
     make it strict at initialitazion
 MANTINE
 
