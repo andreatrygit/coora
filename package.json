@@ -10,7 +10,8 @@
     "@mantine/hooks": "^4.2.8",
     "hono": "^1.4.2",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "react-router-dom": "6"
   },
   "scripts": {
     "client-build": "rm -f ./src/frontend/client-bundle.js.br && esbuild ./src/frontend/client-main.jsx --bundle --minify --outfile=./src/frontend/client-bundle.js && brotli -j ./src/frontend/client-bundle.js && sha256sum -b ./src/frontend/client-bundle.js.br > ./src/frontend/client-bundle-hash-file.txt && sha256sum ./src/frontend/index.html > ./src/frontend/index-hash-file.txt",
