@@ -6,6 +6,7 @@ import ReactDOM from "react-dom/client";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 import {Home} from "./components/routes/_/Home";
+import {NotFound} from "./components/NotFound";
 
 function Spa(){
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
@@ -20,9 +21,9 @@ function Spa(){
         <BrowserRouter>
 
           <Routes>
-
+            
+            <Route path='*' element={<NotFound />} />
             <Route path="/" element={<Home />}/>
-           
 
           </Routes>
 

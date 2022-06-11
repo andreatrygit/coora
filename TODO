@@ -8,3 +8,6 @@ MANTINE
 che fine fanno i log di hono?
 CF aggiunge br e W/ a tutte le req su /* e non fa il giro con etag
 tolto --target da esbuild per il bundle del client altrimenti c'è una cosa non supportata... funziona ugualmente..
+
+!!
+react router dalla v6 mette catch all al primo posto..
