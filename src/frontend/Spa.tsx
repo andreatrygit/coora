@@ -6,7 +6,7 @@ import ReactDOM from "react-dom/client";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 import {Home} from "./components/routes/_/Home";
-import {NotFound} from "./components/NotFound";
+import {NotFound} from "./components/misc/NotFound";
 
 function Spa(){
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
