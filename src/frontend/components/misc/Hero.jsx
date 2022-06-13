@@ -9,7 +9,7 @@ export function Hero(props){
             variant="gradient"
             gradient={{ from: 'indigo', to: 'cyan', deg: 45 }}
             weight={700}
-            style={{fontSize:"60px"}}
+            style={{fontSize:'3.75rem'}}
             >{props.title}</Text>
     )
 }

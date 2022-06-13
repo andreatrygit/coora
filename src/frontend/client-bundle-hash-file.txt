@@ -1,1 +1,1 @@
-520259533399d75cd1155c8d8e3146a4c10bb569590c0c54390d24ce707d8c76 *./src/frontend/client-bundle.js.br
+7bee66a8c3753373f702c533ff2c43ed6864bd81a1c444223f2836b6003629b0 *./src/frontend/client-bundle.js.br
