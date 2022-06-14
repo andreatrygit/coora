@@ -54,6 +54,19 @@ app.post('/api/*',async (c,next) => { //async?
   c.header('Cache-Control','no-store');
 })
 
+app.post('/api/website/is-cookie-policy-set',(c)=>{
+  cookies = c.req.header('Cookie').split('; ');
+  if(cookies.includes('coora-cookie-policy=ok')){
+    c.status(200);
+    return c.json({value:'yes'})
+  }
+  else{
+    c.status(200);
+    c.header('Set-Cookie','coora-cookie-policy=ok')
+    return c.json({value:'no'})
+  }
+})
+
 app.notFound((c) => {
   return c.text("Qui non c'è nulla.", 404)
 })

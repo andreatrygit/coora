@@ -8,7 +8,9 @@
   "dependencies": {
     "@mantine/core": "^4.2.8",
     "@mantine/hooks": "^4.2.8",
+    "@mantine/notifications": "^4.2.9",
     "hono": "^1.4.2",
+    "ky": "^0.30.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-router-dom": "6"
