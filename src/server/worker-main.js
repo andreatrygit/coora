@@ -13,6 +13,7 @@ import index from '../frontend/index.html'
 import clientBundle from '../frontend/client-bundle.js.br'
 import clientBundleRawHash from '../frontend/client-bundle-hash-file.txt'
 import indexRawHash from '../frontend/index-hash-file.txt'
+import { toughCookie, verifyCookieValue } from './utils'
 
 const clientBundleEtag = '"' + clientBundleRawHash.split(' ')[0] + '"'
 const indexEtag = '"' + indexRawHash.split(' ')[0] + '"'
@@ -55,14 +56,13 @@ app.post('/api/*',async (c,next) => { //async?
 })
 
 app.post('/api/website/is-cookie-policy-set',(c)=>{
-  cookies = c.req.header('Cookie').split('; ');
-  if(cookies.includes('coora-cookie-policy=ok')){
+  if(verifyCookieValue(c,'coora-cookie-policy','ok')){
     c.status(200);
     return c.json({value:'yes'})
   }
   else{
     c.status(200);
-    c.header('Set-Cookie','coora-cookie-policy=ok')
+    c.header('Set-Cookie',toughCookie('coora-cookie-policy','ok',365*24*60*60))
     return c.json({value:'no'})
   }
 })
