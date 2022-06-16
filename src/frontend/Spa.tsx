@@ -25,9 +25,9 @@ function Spa(){
 
             <Routes>
               
-              <Route path='*' element={<NotFound />} />
               <Route path="/" element={<Base />}>
                 <Route index element={<Home/>}/>
+                <Route path='*' element={<NotFound />} />
               </Route>
 
             </Routes>
