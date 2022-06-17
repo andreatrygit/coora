@@ -2,6 +2,8 @@ HONO
     make it strict at initialitazion
 CLOUDFLARE
     rate limit
+COCKROACH
+    ssl connection!
 
 
 ???
