@@ -10,7 +10,7 @@ export function NotFound(props){
         <Center style={{width:'100vw', height:'100vh'}}>
             <Stack align="center" justify="center" spacing="xs">
                 <Hero title="Qui non c'è nulla" message="Ci dispiace veramente!"></Hero>
-                <Link to={"/"}><Button size="xl" radius={"xl"}>Torna a casa..</Button></Link>
+                <Link to={"/"}><Button size="xl" radius={"xl"}>Pagina Iniziale</Button></Link>
             </Stack>
         </Center>
     )
