@@ -1,1 +1,5 @@
 node_modules
+src/frontend/client-bundle-hash-file.txt
+src/frontend/client-bundle.js.br
+src/frontend/index-hash-file.txt
+src/server/worker-bundle.js
