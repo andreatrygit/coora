@@ -8,6 +8,8 @@ PRISMA
     noOneFound Exception da configurare sull'istanza del client
     error handling
     istanza globale su hono?
+PACKAGE JSON
+    rm i files dopo l'impacchettamento
 
 ???
 che fine fanno i log di hono?
