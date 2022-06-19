@@ -4,7 +4,10 @@ CLOUDFLARE
     rate limit
 COCKROACH
     ssl connection!
-
+PRISMA
+    noOneFound Exception da configurare sull'istanza del client
+    error handling
+    istanza globale su hono?
 
 ???
 che fine fanno i log di hono?
