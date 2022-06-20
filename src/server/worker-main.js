@@ -71,4 +71,9 @@ app.notFound((c) => {
   return c.text("Qui non c'è nulla.", 404)
 })
 
+app.onError((err, c) => {
+  console.error(`${err}`)
+  return c.text('Custom Error Message', 500)
+})
+
 app.fire()
