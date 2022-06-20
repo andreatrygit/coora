@@ -12,9 +12,9 @@ datasource db {
 
 model Person {
   id                Int     @id @default(sequence())
-  taxin             String
-  lastName          String
-  firstName         String
+  taxin             String  @db.Char(16)
+  lastName          String  @db.Char(50)
+  firstName         String  @db.Char(50)
   dateOfBirthMillis Int?
-  placeOfBirth      String?
+  placeOfBirth      String? @db.Char(50)
 }
