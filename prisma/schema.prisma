@@ -12,9 +12,65 @@ datasource db {
 
 model Person {
   id                Int     @id @default(sequence())
-  taxin             String  @db.Char(16)
+  taxin             String  @unique @db.Char(16)
   lastName          String  @db.Char(50)
   firstName         String  @db.Char(50)
   dateOfBirthMillis Int?
   placeOfBirth      String? @db.Char(50)
+}
+
+model ThirdPartyCompany {
+  id    Int    @id @default(sequence())
+  taxin String @unique @db.Char(16)
+}
+
+model MainCompany {
+  id    Int    @id @default(sequence())
+  taxin String @unique @db.Char(16)
+}
+
+model CompanyName {
+  id           Int    @id @default(sequence())
+  name         String @unique @db.Char(50)
+  openedMillis Int
+  closedMillis Int?
+}
+
+model Vatin {
+  id     Int    @id @default(sequence())
+  number String @unique @db.Char(11)
+}
+
+model Address {
+  id           Int     @id @default(sequence())
+  nation       String  @default("ITALIA") @db.Char(50)
+  zip          String  @db.Char(5)
+  municipality String  @db.Char(50)
+  place        String  @db.Char(50)
+  notes        String? @db.Char(50)
+}
+
+model DesktopPhone {
+  id                          Int    @id @default(sequence())
+  internationalCallingCountry String @default("+39") @db.Char(10)
+  number                      String @unique @db.Char(20)
+}
+
+model MobilePhone {
+  id                          Int     @id @default(sequence())
+  internationalCallingCountry String  @default("+39") @db.Char(10)
+  number                      String  @unique @db.Char(20)
+  verified                    Boolean @default(false)
+}
+
+model Email {
+  id       Int     @id @default(sequence())
+  address  String  @unique @db.Char(50)
+  verified Boolean @default(false)
+}
+
+model Pec {
+  id       Int     @id @default(sequence())
+  address  String  @unique @db.Char(50)
+  verified Boolean @default(false)
 }
