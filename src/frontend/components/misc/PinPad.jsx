@@ -66,7 +66,7 @@ const pinPadMachine = createMachine({
         start:(context,event)=>{assign({startTimeout:(context,event)=>{context.timeoutHandle=setTimeout(()=>{send('RESET')},3000)}})},
         stop:(context,event)=>{assign({stopTimeout:(context,event)=>{if(context.timeoutHandle){clearTimeout(context.timeoutHandle);context.timeoutHandle=null}}})},
         reset:(context,event)=>{assign({reset:(context,event)=>{context.pin=''}})},
-        addDigit:(context,event)=>{assign({addDigit:(context,event)=>{context.pin = context.pin + event.digit}})},
+        addDigit:(context,event)=>{assign({addDigit:(context,event)=>{context.pin = context.pin + event.digit}});console.log(context.pin)},
         deliver:(context,event)=>{onPin(context.pin)},
         exit:(context,event)=>{onCancel()}
     }
