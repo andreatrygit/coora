@@ -1,11 +1,11 @@
+import { Stack } from "@mantine/core";
 import React from "react";
-import { Center } from "@mantine/core";
 import { PinPad } from "../../../misc/PinPad";
 
 export function Demo(){
     return(
-        <Center style={{width:'100vw', height:'100vh'}}>
-            <PinPad/>
-        </Center>
+        <Stack align={"center"} justify={"center"} style={{width:'100vw', minHeight:'100vh', padding:'0.5rem'}}>
+            <PinPad onCancel={()=>console.log('cancelled')} onPin={(pin)=>console.log(pin)}/>
+        </Stack>
     )
 }
