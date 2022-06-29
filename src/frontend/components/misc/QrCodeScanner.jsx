@@ -7,13 +7,12 @@ import Webcam from "react-webcam";
 
 export function QrCodeScanner({onCode, onCancel}){
 
-    const videoElement = useRef(null);
-    const canvasElement = useRef(null);
-
     function paintAndProcess(){
-        var canvas = canvasElement.getContext('2d');
+        const canvasElement = document.getElementById('qr-code-scanner-canvas');
+        const videoElement = document.getElementsByTagName('video')[0]; //just one video tag admitted thus!!
         canvasElement.width = videoElement.videoWidth;
         canvasElement.height = videoElement.videoHeight;
+        var canvas = canvasElement.getContext('2d');
         canvas.drawImage(videoElement,0,0,canvasElement.width,canvasElement.height);
         var imageData = null;
         var code = null;
@@ -45,8 +44,8 @@ export function QrCodeScanner({onCode, onCancel}){
 
     return (
         <Stack align={"center"} justify={"center"}>
-            <Webcam ref={videoElement} audio={false} onUserMediaError={notify} videoConstraints={{facingMode:'environment'}} style={{width:'256px', height:'256px', objectFit:'cover', objectPosition:'center', borderRadius:'24px'}}/>
-            <canvas ref={canvasElement} style={{display:'none'}}></canvas>
+            <Webcam audio={false} onUserMediaError={notify} videoConstraints={{facingMode:{exact:'environment'}}} style={{width:'256px', height:'256px', objectFit:'cover', objectPosition:'center', borderRadius:'24px'}}/>
+            <canvas id='qr-code-scanner-canvas' style={{display:'none'}}></canvas>
             <Button size="xl" radius="xl" onClick={onCancel}>Annulla</Button>
         </Stack>
     )
