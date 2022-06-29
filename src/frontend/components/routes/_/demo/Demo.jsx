@@ -1,7 +1,5 @@
 import { Stack } from "@mantine/core";
-import { showNotification } from "@mantine/notifications";
 import React from "react";
-import { QrCodeScanner } from "../../../misc/QrCodeScanner";
 
 export function Demo(){
     return(
