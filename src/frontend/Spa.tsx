@@ -8,8 +8,8 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 import {NotFound} from "./components/misc/NotFound";
 import { Base } from "./components/misc/Base";
-import {Home} from "./components/routes/_/Home";
-import { Demo } from "./components/routes/_/demo/Demo";
+import {Home} from "./components/routes/Home";
+import { Demo } from "./components/routes/demo/Demo";
 
 function Spa(){
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
