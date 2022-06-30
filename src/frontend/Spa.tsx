@@ -9,7 +9,8 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import {NotFound} from "./components/misc/NotFound";
 import { Base } from "./components/misc/Base";
 import {Home} from "./components/routes/Home";
-import { Demo } from "./components/routes/demo/Demo";
+import { Registered } from "./components/routes/registered/Registered";
+import {Login} from "./components/routes/registered/login/Login";
 
 function Spa(){
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
@@ -28,7 +29,10 @@ function Spa(){
               
               <Route path="/" element={<Base />}>
                 <Route index element={<Home/>}/>
-                <Route path="demo" element={<Demo/>}/>
+                <Route path="registered" element={<Registered/>}>
+                  <Route index element={<NotFound/>}/>
+                  <Route path="login" element={<Login/>}/>
+                </Route>  
                 <Route path='*' element={<NotFound />} />
               </Route>
 
