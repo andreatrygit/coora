@@ -10,7 +10,7 @@ export function Home(props){
     return(
         <Center style={{width:'100vw', height:'100vh'}}>
             <Stack align="center" justify="center" spacing="xs">
-                <Hero title={appName.toUpperCase()} message="La piattaforma Open Source per la cura delle persone."></Hero>
+                <Hero title="Coora" message="La piattaforma Open Source per la cura delle persone."></Hero>
                 <Button component={Link} to="/registered/login" size="xl" radius={"xl"}>Entra</Button>
             </Stack>
         </Center>
