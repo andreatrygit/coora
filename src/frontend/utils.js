@@ -6,3 +6,12 @@ export function kyPost(path,thenCb,catchCb,json={}){
     return ky.post(finalPath,{json:json, retry:0, timeout:4000}).json().then(thenCb).catch(catchCb);
 }
 
+export function isSecret(s){
+    return (typeof(s)==='string' && /^[A-Za-z0-9_-]{21}$/.test(s)) //per nanoid definition
+}
+
+export function isValidQrCode(code){
+    const codeTypes = ['']
+}
+
+export const appName = "coora"
