@@ -15,7 +15,7 @@ export function PersonalDeviceLogin(){
     const [state,setState] = useState('start');
 
     function doTimeClock(){}
-    function doPersonalLogin(){}
+    function doPersonalLogin(){showNotification({title:'PIN IS', message:pin})}
     function doSharedDeviceLogin(){}
 
     useEffect(()=>{
@@ -61,15 +61,20 @@ export function PersonalDeviceLogin(){
         <Stack align={"center"} justify={"center"} style={{width:'100vw', minHeight:'100vh', padding:'0.5rem'}}>
             {state==='start' &&
                 <>
-                    <Button onClick={()=>setState('time-clocking')} leftIcon={<Key/>} size={'lg'} radius={"xl"} color={"violet"}>ENTRARE</Button>
+                    <Button onClick={()=>setState('personal-login')} leftIcon={<Key/>} size={'lg'} radius={"xl"} color={"violet"}>ENTRARE</Button>
                     <Button leftIcon={<Qrcode/>} size={'lg'} radius={"xl"} color={"indigo"}>TIMBRARE</Button>
                     <Button leftIcon={<Qrcode/>} size={'lg'} radius={"xl"}>POSTAZIONE</Button>
                     <Button component={Link} to="/" size="lg" radius={"xl"} variant={"outline"}>Annulla</Button>
                 </>
             }
-            {state==='time-clocking' &&
+            {state==='personal-login' &&
                 <>
-                    <PinPad onCancel={()=>setState('start')}/>
+                    <PinPad onCancel={()=>{
+                                            setPin('');
+                                            setQrCode('');
+                                            setState('start');
+                                            }}
+                            onPin={(p)=>setPin(p)}/>
                 </>
             }
         </Stack>

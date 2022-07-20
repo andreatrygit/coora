@@ -39,7 +39,7 @@ export function PinPad({onPin,onCancel}){
                 <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>setPin(pin+'9')}>9</Button></Center></Grid.Col>
                 <Grid.Col span={1} offset={1}><Center><Button size="xl" radius="xl" onClick={event=>setPin(pin+'0')}>0</Button></Center></Grid.Col>
             </Grid>
-            <Button size="xl" radius="xl" onClick={onCancel}>Annulla</Button>
+            <Button size="lg" radius="xl" variant="outline" onClick={onCancel}>Annulla</Button>
         </Stack>
     )
 }
