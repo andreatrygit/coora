@@ -26,6 +26,6 @@ export function isValidTimeClockQrCode(code){
     return isValidQrCode(code) && code.startsWith(timeClockQrCodeBaseName)
 }
 
-export function isValideSharedDeviceQrCode(code){
+export function isValidSharedDeviceQrCode(code){
     return isValidQrCode(code) && code.startsWith(sharedDeviceQrCodeBaseName)
 }

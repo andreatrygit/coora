@@ -1,11 +1,11 @@
-import { Stack, Button } from "@mantine/core";
+import { Stack, Button, Badge } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import jsQR from "jsqr";
 import React from "react";
 import { useRef, useEffect } from "react";
 import Webcam from "react-webcam";
 
-export function QrCodeScanner({onCode, onCancel}){
+export function QrCodeScanner({onCode, onCancel, message}){
 
     function paintAndProcess(){
         const canvasElement = document.getElementById('qr-code-scanner-canvas');
@@ -44,9 +44,10 @@ export function QrCodeScanner({onCode, onCancel}){
 
     return (
         <Stack align={"center"} justify={"center"}>
+            <Badge size="xl" radius="xl">{message}</Badge>
             <Webcam audio={false} onUserMediaError={notify} videoConstraints={{facingMode:{exact:'environment'}}} style={{width:'256px', height:'256px', objectFit:'cover', objectPosition:'center', borderRadius:'24px'}}/>
             <canvas id='qr-code-scanner-canvas' style={{display:'none'}}></canvas>
-            <Button size="xl" radius="xl" onClick={onCancel}>Annulla</Button>
+            <Button variant="outline" size="lg" radius="xl" onClick={onCancel}>Annulla</Button>
         </Stack>
     )
 }
