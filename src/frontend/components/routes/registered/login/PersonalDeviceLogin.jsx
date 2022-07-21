@@ -74,7 +74,8 @@ export function PersonalDeviceLogin(){
                                             setQrCode('');
                                             setState('start');
                                             }}
-                            onPin={(p)=>setPin(p)}/>
+                            onPin={(p)=>setPin(p)}
+                            message='DIGITA PIN PER ENTRARE'/>
                 </>
             }
         </Stack>

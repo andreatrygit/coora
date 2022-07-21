@@ -3,8 +3,15 @@ import { Badge, Button, Center, Grid, Stack } from "@mantine/core";
 import { useState, useEffect } from "react";
 
 
-export function PinPad({onPin,onCancel}){
+export function PinPad({onPin,onCancel,message}){
     const [pin, setPin] = useState('');
+
+    function addDigit(d){
+        if(pin.length<5){
+            setPin(pin+d)
+        }
+    }
+
     let resetHandle;
     useEffect(()=>{
         if(pin){
@@ -15,7 +22,7 @@ export function PinPad({onPin,onCancel}){
             if(pin.length<5){
                 resetHandle=setTimeout(()=>{setPin('')},3000)
             }
-            else{
+            if(pin.length===5){
                 onPin(pin)
             }
         }
@@ -26,18 +33,19 @@ export function PinPad({onPin,onCancel}){
 
     return(
         <Stack align="center" justify="center">
+            <Badge size="xl" radius="xl">{message}</Badge>
             <Badge size="xl" radius="xl">{'• '.repeat(pin.length)}</Badge>
             <Grid columns={3} gutter={"xs"} style={{width:'256px'}}>
-                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>setPin(pin+'1')}>1</Button></Center></Grid.Col>
-                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>setPin(pin+'2')}>2</Button></Center></Grid.Col>
-                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>setPin(pin+'3')}>3</Button></Center></Grid.Col>
-                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>setPin(pin+'4')}>4</Button></Center></Grid.Col>
-                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>setPin(pin+'5')}>5</Button></Center></Grid.Col>
-                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>setPin(pin+'6')}>6</Button></Center></Grid.Col>
-                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>setPin(pin+'7')}>7</Button></Center></Grid.Col>
-                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>setPin(pin+'8')}>8</Button></Center></Grid.Col>
-                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>setPin(pin+'9')}>9</Button></Center></Grid.Col>
-                <Grid.Col span={1} offset={1}><Center><Button size="xl" radius="xl" onClick={event=>setPin(pin+'0')}>0</Button></Center></Grid.Col>
+                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>addDigit('1')}>1</Button></Center></Grid.Col>
+                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>addDigit('2')}>2</Button></Center></Grid.Col>
+                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>addDigit('3')}>3</Button></Center></Grid.Col>
+                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>addDigit('4')}>4</Button></Center></Grid.Col>
+                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>addDigit('5')}>5</Button></Center></Grid.Col>
+                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>addDigit('6')}>6</Button></Center></Grid.Col>
+                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>addDigit('7')}>7</Button></Center></Grid.Col>
+                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>addDigit('8')}>8</Button></Center></Grid.Col>
+                <Grid.Col span={1}><Center><Button size="xl" radius="xl" onClick={event=>addDigit('9')}>9</Button></Center></Grid.Col>
+                <Grid.Col span={1} offset={1}><Center><Button size="xl" radius="xl" onClick={event=>addDigit('0')}>0</Button></Center></Grid.Col>
             </Grid>
             <Button size="lg" radius="xl" variant="outline" onClick={onCancel}>Annulla</Button>
         </Stack>
