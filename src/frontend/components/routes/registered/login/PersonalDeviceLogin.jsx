@@ -16,7 +16,7 @@ export function PersonalDeviceLogin(){
 
     function doTimeClock(){showNotification({title:'TIMECLOK QRCODE IS', message:qrCode})}
     function doPersonalLogin(){showNotification({title:'PIN IS', message:pin})}
-    function doSharedDeviceLogin(){}
+    function doSharedDeviceLogin(){showNotification({title:'PIN & QRCODE', message:(pin+' '+qrCode)})}
 
     useEffect(()=>{
         if(pin){
@@ -37,27 +37,26 @@ export function PersonalDeviceLogin(){
             }
             if(isValidTimeClockQrCode(qrCode)){
                 if(state==='time-clocking'){
-                    setState('start');
                     doTimeClock()
                 }
-            }
-            else{
-                showNotification({title:'QRCODE DA TIMBRATORE.', message:'Stai scansionando un codice da timbratore anziché da postazione condivisa.', color:'yellow', autoClose:false});
-                setQrCode('');
+                else{
+                    showNotification({title:'QRCODE DA TIMBRATORE.', message:'Stai scansionando un codice da timbratore anziché da postazione condivisa.', color:'yellow', autoClose:false});
+                    setQrCode('');
+                }
             }
 
             if(isValidSharedDeviceQrCode(qrCode)){
                 if(state==='shared-device-login-1'){
-                    setState('shared-device-login-2');
+                    setState('shared-device-login-2'); //this needs the [qrCode] tweak below
                 }
                 
-            }
-            else{
-                showNotification({title:'QRCODE DA POSTAZIONE CONDIVISA.', message:'Stai scansionando un codice da postazione fissa anziché da timbratore.', color:'yellow', autoClose:false});
-                setQrCode('');
+                else{
+                    showNotification({title:'QRCODE DA POSTAZIONE CONDIVISA.', message:'Stai scansionando un codice da postazione fissa anziché da timbratore.', color:'yellow', autoClose:false});
+                    setQrCode('');
+                }
             }
         }
-    })
+    },[qrCode])
 
     return(
         <Stack align={"center"} justify={"center"} style={{width:'100vw', minHeight:'100vh', padding:'0.5rem'}}>
@@ -65,7 +64,7 @@ export function PersonalDeviceLogin(){
                 <>
                     <Button onClick={()=>setState('personal-login')} leftIcon={<Key/>} size={'lg'} radius={"xl"} color={"violet"}>ENTRARE</Button>
                     <Button onClick={()=>setState('time-clocking')} leftIcon={<Qrcode/>} size={'lg'} radius={"xl"} color={"indigo"}>TIMBRARE</Button>
-                    <Button leftIcon={<Qrcode/>} size={'lg'} radius={"xl"}>POSTAZIONE</Button>
+                    <Button onClick={()=>setState('shared-device-login-1')} leftIcon={<Qrcode/>} size={'lg'} radius={"xl"}>POSTAZIONE</Button>
                     <Button component={Link} to="/" size="lg" radius={"xl"} variant={"outline"}>Annulla</Button>
                 </>
             }
@@ -85,6 +84,24 @@ export function PersonalDeviceLogin(){
                                             }}
                                 onCode={(c)=>{setQrCode(c)}}
                                 message={'SCANSIONA TIMBRATORE'}/>
+            }
+            {state==='shared-device-login-1'&&
+                <QrCodeScanner onCancel={()=>{
+                                                    setQrCode('');
+                                                    setState('start');
+                                                }}
+                                    onCode={(c)=>{setQrCode(c)}}
+                                    message={'1 di 2: SCANSIONA POSTAZIONE'}/>
+
+            }
+            {state==='shared-device-login-2' &&
+                <PinPad onCancel={()=>{
+                                            setPin('');
+                                            setQrCode('');
+                                            setState('start');
+                                            }}
+                            onPin={(p)=>setPin(p)}
+                            message='2 di 2: DIGITA PIN'/>
             }
         </Stack>
     )
