@@ -2,7 +2,7 @@ import { Stack, Button, Badge } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import jsQR from "jsqr";
 import React from "react";
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import Webcam from "react-webcam";
 
 export function QrCodeScanner({onCode, onCancel, message}){

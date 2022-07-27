@@ -3,7 +3,6 @@ import { showNotification } from "@mantine/notifications";
 import React from "react";
 import {useState, useEffect} from "react";
 import { isValidSharedDeviceQrCode, isValidQrCode, isValidTimeClockQrCode } from "../../../../utils";
-import { Text } from "@mantine/core";
 import { QrCodeScanner } from "../../../misc/QrCodeScanner";
 import { Key, Qrcode } from "tabler-icons-react";
 import { Link } from "react-router-dom";
