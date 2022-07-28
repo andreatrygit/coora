@@ -18,3 +18,18 @@ export function verifyCookieValue(context,key,value){
     const foundValue = getCookie(context,key);
     return foundValue===value;
 }
+
+import * as jose from 'jose'
+const JWE_KEY = Buffer.from(JWE_BASE64_256BIT_KEY,'base64')
+
+export  async function payloadToJWE(payload){
+    const jwt = await new jose.EncryptJWT(payload)
+    .setProtectedHeader({ alg: 'dir', enc: 'A256GCM' })
+    .setIssuedAt()
+    .encrypt(JWE_KEY)
+    return jwt
+}
+
+export function payloadToCookie(key,payload,maxAge=null){
+    return toughCookie(key,payloadToJWE(payload),maxAge)
+}
