@@ -388,6 +388,11 @@ hono@^1.4.2:
   resolved "https://registry.yarnpkg.com/hono/-/hono-1.4.2.tgz#b368f45d942984c792b9d03804696034b559024c"
   integrity sha512-3Gdb7JPdxPqdJxLhW+IaO+r4PBZDrxO4OEAJUondnNZED98xYl1nnplVdsAYz2ptlMXRuVfqE/6/tdTKBhXAJA==
 
+jose@^4.8.3:
+  version "4.8.3"
+  resolved "https://registry.yarnpkg.com/jose/-/jose-4.8.3.tgz#5a754fb4aa5f2806608d083f438e6916b11087da"
+  integrity sha512-7rySkpW78d8LBp4YU70Wb7+OTgE3OwAALNVZxhoIhp4Kscp+p/fBkdpxGAMKxvCAMV4QfXBU9m6l9nX/vGwd2g==
+
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
