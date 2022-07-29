@@ -20,7 +20,7 @@ export function verifyCookieValue(context,key,value){
 }
 
 import * as jose from 'jose'
-const JWE_KEY = Buffer.from(JWE_BASE64_256BIT_KEY,'base64')
+const JWE_KEY = Uint8Array.from(JWE_KEY_ARRAY_256BIT.split(','))
 
 export  async function payloadToJWE(payload){
     const jwt = await new jose.EncryptJWT(payload)
